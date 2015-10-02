@@ -16,6 +16,6 @@ Notes:
 
 The `.vim/` folder contains the [VIM-LaTeX](http://vim-latex.sourceforge.net/) plugin.
   * The "change environment" macro has been slightly changed to prevent extra `\` characters.
-  * [ ] To do: I probably need to make a similar change the "change command" macro
+  * [ ] To do: I probably need to make a similar change to the "change command" macro
 
 `backup.sh` copies all current files and folders to `~/settings/`
