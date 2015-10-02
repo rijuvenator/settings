@@ -17,6 +17,9 @@ alias ls='ls -Fh --color=auto'
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias voms='voms-proxy-init -voms cms'
 
+# remove completion for cd so that it will complete environment variables
+complete -r cd
+
 # git aliases
 alias ga='git add'
 alias gc='git commit'
@@ -29,7 +32,7 @@ alias gpd='git push origin master'
 # export ROOTSYS="/afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.32/x86_64-slc6-gcc49-opt/root/"
 
 # Sets directory variables
-export WS="/afs/cern.ch/work/a/adasgupt"
-export EOSDIR="/eos/cms/store/user/adasgupt"
+export WS=/afs/cern.ch/work/a/adasgupt
+export EOSDIR="eos/cms/store/user/adasgupt"
 export EOSROOT="root://eoscms//eos/cms/store/user/adasgupt"
 export EOSSRM="srm://srm-eoscms.cern.ch//eos/cms/store/user/adasgupt"
