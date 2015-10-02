@@ -12,6 +12,14 @@ trap 'echo -ne "\e[0m"' DEBUG
 # ls with all, colors, file identification, and  human file sizes 
 alias ls='ls -GFh'
 
+# git aliases
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gau='git add -u'
+alias gcm='git commit -m'
+alias gpd='git push origin master'
+
 # Sets default editor and line editing to vim; set mode indicator
 export EDITOR=vim
 set -o vi

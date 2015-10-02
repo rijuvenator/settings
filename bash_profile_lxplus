@@ -17,6 +17,14 @@ alias ls='ls -Fh --color=auto'
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias voms='voms-proxy-init -voms cms'
 
+# git aliases
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gau='git add -u'
+alias gcm='git commit -m'
+alias gpd='git push origin master'
+
 # Sets $ROOTSYS directory
 # export ROOTSYS="/afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.32/x86_64-slc6-gcc49-opt/root/"
 

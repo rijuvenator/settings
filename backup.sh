@@ -6,6 +6,6 @@ rm -r ~/settings/vim_mac/
 cp -r ~/.vim ~/settings/vim_mac
 echo "Copying from lxplus; you'll be asked for your password."
 scp adasgupt@lxplus.cern.ch:~/".bash_profile .vimrc .rootlogon.C" ~/settings/
-mv .bash_profile bash_profile_lxplus
-mv .vimrc vimrc_lxplus
-mv .rootlogon.C rootlogon.C
+mv ~/settings/.bash_profile ~/settings/bash_profile_lxplus
+mv ~/settings/.vimrc ~/settings/vimrc_lxplus
+mv ~/settings/.rootlogon.C ~/settings/rootlogon.C
