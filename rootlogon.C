@@ -20,7 +20,7 @@ TH1F* th(const char* name="h1")
 	return h1;
 }
 
-void setStyle(int width_=800, int height_=600, int font_=42)
+void setStyle(int width_=800, int height_=600, int font_=42, float tsize_=0.04)
 {
 	TStyle *style = new TStyle("style","Style");
 
@@ -29,12 +29,15 @@ void setStyle(int width_=800, int height_=600, int font_=42)
 	int font = font_;
 	float tMargin = 0.1;
 	float lMargin = 0.125;
-	float tsize = 0.04;
+	float tsize = tsize_;
 
 	float rMargin = tMargin * height / width;
 	float bMargin = lMargin;
 	float titleX = lMargin + (1-lMargin-rMargin)/2;
 	float titleY = 1 - (tMargin/2);
+
+	// generic line thicknesses
+	style->SetLineWidth(2);
 
 	// canvas
 	style->SetCanvasBorderMode(0);			// off
