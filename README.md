@@ -20,4 +20,5 @@ The `.vim/` folder contains the [VIM-LaTeX](http://vim-latex.sourceforge.net/) p
 
 `backup.sh` copies all current files and folders to `~/settings/`
 
-`colors.sh` prints a helpful ANSI SGR color code matrix.
+`colors.sh` prints a helpful ANSI SGR color code matrix
+  * On OS X, the script needs some minor modifications; see script for details
