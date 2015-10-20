@@ -39,7 +39,7 @@ export EOSDIR="eos/cms/store/user/adasgupt"
 export EOSROOT="root://eoscms//eos/cms/store/user/adasgupt"
 export EOSSRM="srm://srm-eoscms.cern.ch//eos/cms/store/user/adasgupt"
 
-# cmsplc remote logon
+# cmslpc remote logon
 alias kfnal="kinit adasgupt@FNAL.GOV"
 alias sshfnal="ssh -Y adasgupt@cmslpc-sl6.fnal.gov"
 export FH="adasgupt@cmslpc-sl6.fnal.gov"
