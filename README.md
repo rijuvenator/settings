@@ -7,6 +7,7 @@ Contains:
   * `.bash_profile` (OS X, lxplus)
   * `.vim/` (OS X)
   * `.rootlogon.C` (lxplus)
+  * `colors.sh` (lxplus, OS X with modification)
 
 Notes:
   * Dots should be prefixed
