@@ -1,5 +1,4 @@
 #!/bin/bash
-# For Mac OS X, replace every \e with \033, and e[CODEm with 033[CODEm before running
 
 echo -e "\e[1;4;38;5;9mC \e[1;4;38;5;208mO \e[1;4;38;5;11mL \e[1;4;38;5;34mO \e[1;4;38;5;12mR \e[1;4;38;5;129mS\e[m"
 
