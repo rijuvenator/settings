@@ -25,6 +25,11 @@ export EDITOR=vim
 set -o vi
 bind 'set show-mode-in-prompt on'
 
-# Custom commands
+# lxplus remote logon
 alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
 export CH="adasgupt@lxplus.cern.ch"
+
+# cmslpc remote logon
+alias kfnal='kinit adasgupt@FNAL.GOV'
+alias sshfnal='ssh -Y adasgupt@cmslpc-sl6.fnal.gov'
+export FH="adasgupt@cmslpc-sl6.fnal.gov"

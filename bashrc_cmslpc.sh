@@ -15,6 +15,9 @@ set -o vi
 # ls with all, file identification, human file sizes, and colors
 alias ls='ls -Fh --color=auto'
 
+# Makes CMSSW commands available
+alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
+
 # crab and voms proxy aliases
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias voms='voms-proxy-init -voms cms'
@@ -38,8 +41,3 @@ export WS="/afs/cern.ch/work/a/adasgupt"
 export EOSDIR="eos/cms/store/user/adasgupt"
 export EOSROOT="root://eoscms//eos/cms/store/user/adasgupt"
 export EOSSRM="srm://srm-eoscms.cern.ch//eos/cms/store/user/adasgupt"
-
-# cmsplc remote logon
-alias kfnal="kinit adasgupt@FNAL.GOV"
-alias sshfnal="ssh -Y adasgupt@cmslpc-sl6.fnal.gov"
-export FH="adasgupt@cmslpc-sl6.fnal.gov"
