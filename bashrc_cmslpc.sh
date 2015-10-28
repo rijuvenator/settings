@@ -41,3 +41,9 @@ export WS="/afs/cern.ch/work/a/adasgupt"
 export EOSDIR="eos/cms/store/user/adasgupt"
 export EOSROOT="root://eoscms//eos/cms/store/user/adasgupt"
 export EOSSRM="srm://srm-eoscms.cern.ch//eos/cms/store/user/adasgupt"
+
+export D3="/uscms_data/d3/adasgupt/"
+
+# lxplus remote logon
+alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
+export CH="adasgupt@lxplus.cern.ch"
