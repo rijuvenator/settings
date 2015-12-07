@@ -1,8 +1,10 @@
 #--BASH PREFERENCES
 
 # Sets username@hostname to green, full directory to red, commands to blue
+#export PS1="\[\e[32m\]\u@\h: \[\e[31m\]\w\$ \[\e[34m\]"
+# Sets time to magenta, username@hostname to green, full directory to red, commands to blue
+export PS1="\[\e[35m\][\t] \[\e[32m\]\u@\h: \[\e[31m\]\w\$ \[\e[34m\]"
 # Sets directories to bblue, links to bcyan, executables to bmagenta
-export PS1="\[\e[32m\]\u@\h: \[\e[31m\]\w\$ \[\e[34m\]"
 LS_COLORS="di=1;34:ln=1;36:ex=1;31"
 
 # Resets color before output!

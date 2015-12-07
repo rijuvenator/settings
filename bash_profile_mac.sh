@@ -1,8 +1,10 @@
 #--BASH PREFERENCES--
 
 # Sets username@Kairos to green, full directory to red, commands to blue
+#export PS1="\[\033[32m\]\u@Kairos: \[\033[31m\]\w\$ \[\033[34m\]"
+# Sets time to magenta, username@Kairos to green, full directory to red, commands to blue
+export PS1="\[\033[35m\][\t] \[\033[32m\]\u@Kairos: \[\033[31m\]\w\$ \[\033[34m\]"
 # Sets directories to bblue, links to bcyan, socks to bmagenta, pipes to bbrown, executables to bred
-export PS1="\[\033[32m\]\u@Kairos: \[\033[31m\]\w\$ \[\033[34m\]"
 export CLICOLOR=1
 export LSCOLORS=ExGxFxDxBxegedabagacad
 
