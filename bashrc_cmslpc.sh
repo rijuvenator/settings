@@ -18,7 +18,9 @@ set -o vi
 alias ls='ls -Fh --color=auto'
 
 # Makes CMSSW commands available
-alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
+# Removed alias; it will be done upon login from now on
+#alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
+source /cvmfs/cms.cern.ch/cmsset_default.sh
 
 # crab and voms proxy aliases
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
