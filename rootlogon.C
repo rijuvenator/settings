@@ -5,7 +5,7 @@
 	gROOT->GetPluginManager()->AddHandler("TBrowserImp", "TRootBrowser", "TRootBrowser", "Gui", "NewBrowser(TBrowser *, const char *, Int_t, Int_t, UInt_t, UInt_t, Option_t *)");
 
 	// set style
-	setStyle();
+	//setStyle();
 }
 
 void bb()
@@ -18,6 +18,12 @@ TH1F* th(const char* name="h1")
 	TH1F *h1 = new TH1F(name,"Test;X Axis;Y Axis",100,-10,10);
 	h1->FillRandom("gaus",10000);
 	return h1;
+}
+
+TTree* tt(const char* name)
+{
+		TTree* t = (TTree*) _file0->Get(name);
+			return t;
 }
 
 void setStyle(int width_=800, int height_=600, int font_=42, float tsize_=0.04)
@@ -62,11 +68,11 @@ void setStyle(int width_=800, int height_=600, int font_=42, float tsize_=0.04)
 
 	// frame
 	style->SetFrameBorderMode(0);			// off
-  	style->SetFrameFillColor(kWhite);		// white
-  	style->SetFrameFillStyle(0);			// hollow
-  	style->SetFrameLineColor(kWhite);		// white
-  	style->SetFrameLineStyle(1);			// solid
-  	style->SetFrameLineWidth(0);			// pixels
+	style->SetFrameFillColor(kWhite);		// white
+	style->SetFrameFillStyle(0);			// hollow
+	style->SetFrameLineColor(kWhite);		// white
+	style->SetFrameLineStyle(1);			// solid
+	style->SetFrameLineWidth(0);			// pixels
 
 	// legend
 	style->SetLegendBorderSize(0);			// off

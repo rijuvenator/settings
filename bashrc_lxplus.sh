@@ -18,11 +18,6 @@ set -o vi
 # ls with all, file identification, human file sizes, and colors
 alias ls='ls -Fh --color=auto'
 
-# Makes CMSSW commands available
-# Removed alias; it will be done upon login from now on
-#alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
-source /cvmfs/cms.cern.ch/cmsset_default.sh
-
 # crab and voms proxy aliases
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias voms='voms-proxy-init -voms cms'
@@ -47,16 +42,12 @@ export EOSDIR="eos/cms/store/user/adasgupt"
 export EOSROOT="root://eoscms//eos/cms/store/user/adasgupt"
 export EOSSRM="srm://srm-eoscms.cern.ch//eos/cms/store/user/adasgupt"
 
-export D3="/uscms_data/d3/adasgupt/"
-export EOSFNAL="/eos/uscms/store/user/adasgupt/"
-
-# lxplus remote logon
-alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
-export CH="adasgupt@lxplus.cern.ch"
+# cmslpc remote logon
+alias kfnal="kinit adasgupt@FNAL.GOV"
+alias sshfnal="ssh -Y adasgupt@cmslpc-sl6.fnal.gov"
+export FH="adasgupt@cmslpc-sl6.fnal.gov"
 
 # replacement motd
-printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOST | sed -nr "s/\..*//p"`
-printf "\e[1mrunning \e[32mSLF %s\e[30m. " `sed -nr "/SLF/s/(.*\(SLF\s|\))//gp" /etc/motd`
+printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOSTNAME | sed -nr "s/\..*//p"`
+printf "\e[1mrunning \e[32mSLC %s\e[30m. " `sed -nr "/SLC/s/.*\s//gp" /etc/motd`
 printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\n" `users | sed -n "s/\s/\n/gp" | wc -l`
-
-cd /uscms_data/d3/adasgupt/

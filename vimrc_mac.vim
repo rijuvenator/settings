@@ -1,7 +1,7 @@
 filetype plugin indent on
 syntax on
 set tabstop=4 shiftwidth=4 softtabstop=4
-set laststatus=1
+set ruler hlsearch
 
 autocmd FileType tex setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType tex map <Leader>cc <S-F7>
