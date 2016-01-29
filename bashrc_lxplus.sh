@@ -48,6 +48,12 @@ alias sshfnal="ssh -Y adasgupt@cmslpc-sl6.fnal.gov"
 export FH="adasgupt@cmslpc-sl6.fnal.gov"
 
 # replacement motd
+printf "*********************************************************************************\n"
 printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOSTNAME | sed -nr "s/\..*//p"`
 printf "\e[1mrunning \e[32mSLC %s\e[30m. " `sed -nr "/SLC/s/.*\s//gp" /etc/motd`
 printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\n" `users | sed -n "s/\s/\n/gp" | wc -l`
+printf "*********************************************************************************\n"
+
+# logon history
+sed -i "1a $(printf "%s --- %s\n" `echo $HOSTNAME | sed -n "s/\..*//p"` "`date +"%b %d %Y, %T %Z"`")" ~/logons
+sed -ni "1,101p" ~/logons

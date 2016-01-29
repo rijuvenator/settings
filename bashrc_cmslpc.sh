@@ -55,8 +55,14 @@ alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
 export CH="adasgupt@lxplus.cern.ch"
 
 # replacement motd
+printf "*********************************************************************************\n"
 printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOST | sed -nr "s/\..*//p"`
 printf "\e[1mrunning \e[32mSLF %s\e[30m. " `sed -nr "/SLF/s/(.*\(SLF\s|\))//gp" /etc/motd`
 printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\n" `users | sed -n "s/\s/\n/gp" | wc -l`
+printf "*********************************************************************************\n"
+
+# logon history
+sed -i "1a $(printf "%s --- %s\n" `echo $HOST | sed -n "s/\..*//p"` "`date +"%b %d %Y, %T %Z"`")" ~/logons
+sed -ni "1,101p" ~/logons
 
 cd /uscms_data/d3/adasgupt/
