@@ -37,6 +37,7 @@ alias gp='git push'
 alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
+alias gs='git status'
 
 # Sets $ROOTSYS directory
 # export ROOTSYS="/afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.32/x86_64-slc6-gcc49-opt/root/"
@@ -55,7 +56,7 @@ alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
 export CH="adasgupt@lxplus.cern.ch"
 
 # replacement motd
-printf "*********************************************************************************\n"
+printf "\n*********************************************************************************\n"
 printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOST | sed -nr "s/\..*//p"`
 printf "\e[1mrunning \e[32mSLF %s\e[30m. " `sed -nr "/SLF/s/(.*\(SLF\s|\))//gp" /etc/motd`
 printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\n" `users | sed -n "s/\s/\n/gp" | wc -l`

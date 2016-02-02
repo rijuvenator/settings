@@ -32,6 +32,7 @@ alias gp='git push'
 alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
+alias gs='git status'
 
 # Sets $ROOTSYS directory
 # export ROOTSYS="/afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.32/x86_64-slc6-gcc49-opt/root/"
@@ -48,12 +49,12 @@ alias sshfnal="ssh -Y adasgupt@cmslpc-sl6.fnal.gov"
 export FH="adasgupt@cmslpc-sl6.fnal.gov"
 
 # replacement motd
-printf "*********************************************************************************\n"
+printf "\n*********************************************************************************\n"
 printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOSTNAME | sed -nr "s/\..*//p"`
 printf "\e[1mrunning \e[32mSLC %s\e[30m. " `sed -nr "/SLC/s/.*\s//gp" /etc/motd`
 printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\n" `users | sed -n "s/\s/\n/gp" | wc -l`
 printf "*********************************************************************************\n"
 
 # logon history
-sed -i "1a $(printf "%s --- %s\n" `echo $HOSTNAME | sed -n "s/\..*//p"` "`date +"%b %d %Y, %T %Z"`")" ~/logons
+sed -i "1a $(printf "%-10s --- %s\n" `echo $HOSTNAME | sed -n "s/\..*//p"` "`date +"%b %d %Y, %T %Z"`")" ~/logons
 sed -ni "1,101p" ~/logons

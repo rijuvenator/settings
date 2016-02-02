@@ -19,6 +19,7 @@ alias gp='git push'
 alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
+alias gs='git status'
 
 # Sets default editor and line editing to vim; set mode indicator
 export EDITOR=vim
