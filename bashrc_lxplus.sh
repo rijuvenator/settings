@@ -33,6 +33,7 @@ alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
 alias gs='git status'
+alias gd='git diff --cached'
 
 # Sets $ROOTSYS directory
 # export ROOTSYS="/afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.32/x86_64-slc6-gcc49-opt/root/"

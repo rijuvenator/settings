@@ -38,6 +38,7 @@ alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
 alias gs='git status'
+alias gd='git diff --cached'
 
 # Sets $ROOTSYS directory
 # export ROOTSYS="/afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.32/x86_64-slc6-gcc49-opt/root/"
@@ -48,7 +49,7 @@ export EOSDIR="eos/cms/store/user/adasgupt"
 export EOSROOT="root://eoscms//eos/cms/store/user/adasgupt"
 export EOSSRM="srm://srm-eoscms.cern.ch//eos/cms/store/user/adasgupt"
 
-export D3="/uscms_data/d3/adasgupt/"
+export d3="/uscms_data/d3/adasgupt/"
 export EOSFNAL="/eos/uscms/store/user/adasgupt/"
 
 # lxplus remote logon
