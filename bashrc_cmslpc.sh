@@ -56,8 +56,19 @@ export d3="/uscms_data/d3/adasgupt/"
 export EOSFNAL="/eos/uscms/store/user/adasgupt/"
 
 # lxplus remote logon
-alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
 export CH="adasgupt@lxplus.cern.ch"
+function sshcern
+{
+    if [ $# == 0 ]; then
+        ssh -Y adasgupt@lxplus.cern.ch
+        return 0
+    fi
+    if [[ "$1" =~ [^0-9] ]]; then
+        echo "Non-digit detected; check input string." >&2
+        return 1
+    fi
+    ssh -Y adasgupt@lxplus${1}.cern.ch
+}
 
 # replacement motd
 printf "\n*********************************************************************************\n"

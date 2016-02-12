@@ -48,9 +48,20 @@ export EOSROOT="root://eoscms//eos/cms/store/user/adasgupt"
 export EOSSRM="srm://srm-eoscms.cern.ch//eos/cms/store/user/adasgupt"
 
 # cmslpc remote logon
-alias kfnal="kinit adasgupt@FNAL.GOV"
-alias sshfnal="ssh -Y adasgupt@cmslpc-sl6.fnal.gov"
 export FH="adasgupt@cmslpc-sl6.fnal.gov"
+alias kfnal="kinit adasgupt@FNAL.GOV"
+function sshfnal
+{
+    if [ $# == 0 ]; then
+        ssh -Y adasgupt@cmslpc-sl6.fnal.gov
+        return 0
+    fi
+    if [[ "$1" =~ [^0-9] ]]; then
+        echo "Non-digit detected; check input string." >&2
+        return 1
+    fi
+    ssh -Y adasgupt@cmslpc${1}.fnal.gov
+}
 
 # replacement motd
 printf "\n*********************************************************************************\n"

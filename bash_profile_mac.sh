@@ -28,10 +28,34 @@ set -o vi
 bind 'set show-mode-in-prompt on'
 
 # lxplus remote logon
-alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
+# alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
 export CH="adasgupt@lxplus.cern.ch"
+function sshcern
+{
+	if [ $# == 0 ]; then
+		ssh -Y adasgupt@lxplus.cern.ch
+		return 0
+	fi
+	if [[ "$1" =~ [^0-9] ]]; then
+		echo "Non-digit detected; check input string." >&2
+		return 1
+	fi
+	ssh -Y adasgupt@lxplus${1}.cern.ch
+}
 
 # cmslpc remote logon
-alias kfnal='kinit adasgupt@FNAL.GOV'
-alias sshfnal='ssh -Y adasgupt@cmslpc-sl6.fnal.gov'
 export FH="adasgupt@cmslpc-sl6.fnal.gov"
+alias kfnal='kinit adasgupt@FNAL.GOV'
+#alias sshfnal='ssh -Y adasgupt@cmslpc-sl6.fnal.gov'
+function sshfnal
+{
+	if [ $# == 0 ]; then
+		ssh -Y adasgupt@cmslpc-sl6.fnal.gov
+		return 0
+	fi
+	if [[ "$1" =~ [^0-9] ]]; then
+		echo "Non-digit detected; check input string." >&2
+		return 1
+	fi
+	ssh -Y adasgupt@cmslpc${1}.fnal.gov
+}
