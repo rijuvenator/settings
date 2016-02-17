@@ -70,6 +70,11 @@ function sshcern
     ssh -Y adasgupt@lxplus${1}.cern.ch
 }
 
+function condor_s
+{
+	condor_q adasgupt | tail -n 1 | awk -v tot=$1 '{print tot, "jobs;", (tot-$1), "completed;", $1, "left;", $7, "idle;", $9, "running;", $11, "held."; }'
+}
+
 # replacement motd
 printf "\n*********************************************************************************\n"
 printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOST | sed -nr "s/\..*//p"`
