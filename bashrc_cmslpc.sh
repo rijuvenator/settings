@@ -70,6 +70,16 @@ function sshcern
     ssh -Y adasgupt@lxplus${1}.cern.ch
 }
 
+# sets grep colors: filename to faint, matching text to bright bold red, matching lines to bold, and line numbers and separators to green
+# ggrep puts matching lines on their own indented line, and takes out the colon
+export GREP_COLORS="fn=2:ms=1;91:mc=1;91:mt=1;91:cx=1:sl=1:ln=32:bn=32:se=32"
+function ggrep
+{
+	sed -n "s/:/\n    /p" <(2>/dev/null grep --color=always "$@")
+}
+
+# a useful function for formatting the last line of a condor_q output
+# first argument needs to be the number of jobs submitted
 function condor_s
 {
 	condor_q adasgupt | tail -n 1 | awk -v tot=$1 '{print tot, "jobs;", (tot-$1), "completed;", $1, "left;", $7, "idle;", $9, "running;", $11, "held."; }'
