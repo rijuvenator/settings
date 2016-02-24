@@ -21,6 +21,8 @@ set -o vi
 # ls with all, file identification, human file sizes, and colors
 alias ls='ls -Fh --color=auto'
 
+alias root='sett -t root; root'
+
 # Makes CMSSW commands available
 # Removed alias; it will be done upon login from now on
 #alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
@@ -83,6 +85,31 @@ function ggrep
 function condor_s
 {
 	condor_q adasgupt | tail -n 1 | awk -v tot=$1 '{print tot, "jobs;", (tot-$1), "completed;", $1, "left;", $7, "idle;", $9, "running;", $11, "held."; }'
+}
+
+# Sets Terminal titles; -t for tab, -w for window
+function sett
+{
+	if [ "$1" == "-t" ]; then
+		printf "\e]1;(${HOSTNAME%%.*}): $2\a"
+	fi
+	if [ "$1" == "-w" ]; then
+		printf "\e]2;$2\a"
+	fi
+}
+
+# Sets Terminal tab title to current working directory after every command
+PROMPT_COMMAND='sett -t "$(basename $PWD)"'
+
+# Sets Terminal tab title to "vim — FILENAME", then opens vim
+function vim
+{
+    if [ "$1" ]; then
+		sett -t "vim — "$(basename "$1")
+        /usr/bin/vim "$1"
+    else
+        /usr/bin/vim
+    fi
 }
 
 # replacement motd

@@ -21,6 +21,8 @@ set -o vi
 # ls with all, file identification, human file sizes, and colors
 alias ls='ls -Fh --color=auto'
 
+alias root='sett -t root; root'
+
 # crab and voms proxy aliases
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias voms='voms-proxy-init -voms cms'
@@ -69,6 +71,31 @@ export GREP_COLORS="fn=2:ms=1;91:mc=1;91:mt=1;91:cx=1:sl=1:ln=32:bn=32:se=32"
 function ggrep
 {
 	    sed -n "s/:/\n    /p" <(2>/dev/null grep --color=always "$@")
+}
+
+# Sets Terminal titles; -t for tab, -w for window
+function sett
+{
+    if [ "$1" == "-t" ]; then
+		printf "\e]1;(${HOSTNAME%%.*}): $2\a"
+    fi
+    if [ "$1" == "-w" ]; then
+        printf "\e]2;$2\a"
+    fi
+}
+
+# Sets Terminal tab title to current working directory after every command
+PROMPT_COMMAND='sett -t "$(basename $PWD)"'
+
+# Sets Terminal tab title to "vim — FILENAME", then opens vim
+function vim
+{
+    if [ "$1" ]; then
+		sett -t "vim — "$(basename "$1")
+        /usr/bin/vim "$1"
+    else
+        /usr/bin/vim
+    fi
 }
 
 # replacement motd

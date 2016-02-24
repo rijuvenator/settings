@@ -59,3 +59,28 @@ function sshfnal
 	fi
 	ssh -Y adasgupt@cmslpc${1}.fnal.gov
 }
+
+# Sets Terminal titles; -t for tab, -w for window
+function sett
+{
+    if [ "$1" == "-t" ]; then
+        printf "\e]1;$2\a"
+    fi
+    if [ "$1" == "-w" ]; then
+        printf "\e]2;$2\a"
+    fi
+}
+
+# Sets Terminal tab title to current working directory after every command
+PROMPT_COMMAND='sett -t $(basename $PWD)'
+
+# Sets Terminal tab title to vim — FILENAME, then opens vim
+function vim
+{
+	if [ "$1" ]; then
+		sett -t "vim — "$(basename "$1")
+		/usr/bin/vim "$1"
+	else
+		/usr/bin/vim
+	fi
+}
