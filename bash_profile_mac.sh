@@ -28,7 +28,6 @@ set -o vi
 bind 'set show-mode-in-prompt on'
 
 # lxplus remote logon
-# alias sshcern='ssh -Y adasgupt@lxplus.cern.ch'
 export CH="adasgupt@lxplus.cern.ch"
 function sshcern
 {
@@ -46,7 +45,6 @@ function sshcern
 # cmslpc remote logon
 export FH="adasgupt@cmslpc-sl6.fnal.gov"
 alias kfnal='kinit adasgupt@FNAL.GOV'
-#alias sshfnal='ssh -Y adasgupt@cmslpc-sl6.fnal.gov'
 function sshfnal
 {
 	if [ $# == 0 ]; then

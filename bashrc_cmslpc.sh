@@ -21,8 +21,6 @@ set -o vi
 # ls with all, file identification, human file sizes, and colors
 alias ls='ls -Fh --color=auto'
 
-alias root='sett -t root; root'
-
 # Makes CMSSW commands available
 # Removed alias; it will be done upon login from now on
 #alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
@@ -72,7 +70,7 @@ function sshcern
     ssh -Y adasgupt@lxplus${1}.cern.ch
 }
 
-# sets grep colors: filename to faint, matching text to bright bold red, matching lines to bold, and line numbers and separators to green
+# Sets grep colors: filename to faint, matching text to bright bold red, matching lines to bold, and line numbers and separators to green
 # ggrep puts matching lines on their own indented line, and takes out the colon
 export GREP_COLORS="fn=2:ms=1;91:mc=1;91:mt=1;91:cx=1:sl=1:ln=32:bn=32:se=32"
 function ggrep
@@ -112,15 +110,18 @@ function vim
     fi
 }
 
-# replacement motd
+# Sets Terminal tab title to "root", then calls root
+alias root='sett -t root; root'
+
+# Replacement motd
 printf "\n*********************************************************************************\n"
-printf "\e[1mWelcome to \e[31m%s\e[30m, " `echo $HOST | sed -nr "s/\..*//p"`
+printf "\e[1mWelcome to \e[31m%s\e[30m, " ${HOSTNAME%%.*}
 printf "\e[1mrunning \e[32mSLF %s\e[30m. " `sed -nr "/SLF/s/(.*\(SLF\s|\))//gp" /etc/motd`
 printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\n" `users | sed -n "s/\s/\n/gp" | wc -l`
 printf "*********************************************************************************\n"
 
-# logon history
-sed -i "1a $(printf "%s --- %s\n" `echo $HOST | sed -n "s/\..*//p"` "`date +"%b %d %Y, %T %Z"`")" ~/logons
+# Logon history
+sed -i "1a $(printf "%s --- %s\n" ${HOSTNAME%%.*} "`date +"%b %d %Y, %T %Z"`")" ~/logons
 sed -ni "1,101p" ~/logons
 
 cd /uscms_data/d3/adasgupt/
