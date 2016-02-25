@@ -22,8 +22,9 @@ Notes:
 Fermilab SLF6 Cluster Notes:
   * `.vimrc` and `.rootlogon.C` are the same as for lxplus, so no copies
   * `.bashrc` for cmslpc is the same as for lxplus, except it
-    * defines a `cmsset` command that sources a script so as to allow use of `scram` and `cmsenv`
-    * doesn't define cmslpc logon aliases (obviously)
+    * executes the `cmsset` script so as to allow use of `scram` and `cmsenv`
+    * defines lxplus instead of cmslpc aliases; doesn't define `d3` or `EOSFNAL`
+    * defines a `condor_s` status formatting function
   * `.tcshrc` for cmslpc executes `bash` (and drops `tcsh`) *if not interactive*
     * in place of a simple `exec bash`, so that `scp` doesn't break
 
