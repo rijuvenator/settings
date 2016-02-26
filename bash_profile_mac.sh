@@ -27,10 +27,34 @@ export EDITOR=vim
 set -o vi
 bind 'set show-mode-in-prompt on'
 
+#--SSH FUNCTIONS--
+# krb5.conf expects the ticket to be in ~/.kcaches/cache, so the directory MUST exist
+mkdir -p ~/.kcaches
+# kcern and kfnal switch the "active" kerberos ticket to lxplus and cmslpc, check if it's expired, and re-authenticate if so
+# sshcern and sshfnal ssh into lxplus and cmslpc; each will take a number string; if specified, ssh'ing into a specific machine will be attempted
+
 # lxplus remote logon
 export CH="adasgupt@lxplus.cern.ch"
+function kcern
+{
+	if [ -a ~/.kcaches/cache_CERN ]
+	then
+		cp ~/.kcaches/cache_CERN ~/.kcaches/cache
+	else
+		kinit -c ~/.kcaches/cache_CERN adasgupt@CERN.CH
+		kcern
+	fi
+	datestr=$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5"#"$6"#"$7"#"$8}')
+	if [ $(date -j -f "%b#%d#%H:%M:%S#%Y" $datestr +%Y%m%d%H%M%S) -le $(date +%Y%m%d%H%M%S) ]
+	then
+		echo "Existing ticket expired; please re-authenticate."
+		kinit -c ~/.kcaches/cache_CERN adasgupt@CERN.CH
+		kcern
+	fi
+}
 function sshcern
 {
+	kcern
 	if [ $# == 0 ]; then
 		ssh -Y adasgupt@lxplus.cern.ch
 		return 0
@@ -44,9 +68,26 @@ function sshcern
 
 # cmslpc remote logon
 export FH="adasgupt@cmslpc-sl6.fnal.gov"
-alias kfnal='kinit adasgupt@FNAL.GOV'
+function kfnal
+{
+	if [ -a ~/.kcaches/cache_FNAL ]
+	then
+		cp ~/.kcaches/cache_FNAL ~/.kcaches/cache
+	else
+		kinit -c ~/.kcaches/cache_FNAL adasgupt@FNAL.GOV
+		kfnal
+	fi
+	datestr=$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5"#"$6"#"$7"#"$8}')
+	if [ $(date -j -f "%b#%d#%H:%M:%S#%Y" $datestr +%Y%m%d%H%M%S) -le $(date +%Y%m%d%H%M%S) ]
+	then
+		echo "Existing ticket expired; please re-authenticate."
+		kinit -c ~/.kcaches/cache_FNAL adasgupt@FNAL.GOV
+		kfnal
+	fi
+}
 function sshfnal
 {
+	kfnal
 	if [ $# == 0 ]; then
 		ssh -Y adasgupt@cmslpc-sl6.fnal.gov
 		return 0
@@ -57,6 +98,8 @@ function sshfnal
 	fi
 	ssh -Y adasgupt@cmslpc${1}.fnal.gov
 }
+
+#--TAB TITLE FUNCTIONS--
 
 # Sets Terminal titles; -t for tab, -w for window
 function sett

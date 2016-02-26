@@ -28,11 +28,20 @@ Fermilab SLF6 Cluster Notes:
   * `.tcshrc` for cmslpc executes `bash` (and drops `tcsh`) *if not interactive*
     * in place of a simple `exec bash`, so that `scp` doesn't break
 
+Kerberos Authentication Notes:
+I modified `/etc/krb5.conf` on OS X so as to conveniently ssh without passwords, adding:
+  * Under `[libdefaults]`:
+    * `default_cc_type = FILE`; changes from API-based to FILE-based
+    * `default_cc_name = /Users/Riju/.kcaches/cache`; provides credential cache file
+  * Under `[domain_realm]`:
+    * `cern.ch = CERN.CH`
+
 The `.vim/` folder contains the [VIM-LaTeX](http://vim-latex.sourceforge.net/) plugin.
   * The "change environment" macro has been slightly changed to prevent extra `\` characters.
   * [ ] To do: I probably need to make a similar change to the "change command" macro
 
 `backup.sh` copies all current files and folders to `~/settings/`
+  * contains a version of the `kcern` and `kfnal` functions
 
 `colors.sh` prints a helpful ANSI SGR color code matrix
   * On OS X, run `macColors.sh` first to produce a Mac-compatible `colors.sh`
