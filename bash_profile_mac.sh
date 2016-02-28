@@ -44,8 +44,10 @@ function kcern
 		kinit -c ~/.kcaches/cache_CERN adasgupt@CERN.CH
 		kcern
 	fi
-	datestr=$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5"#"$6"#"$7"#"$8}')
-	if [ $(date -j -f "%b#%d#%H:%M:%S#%Y" $datestr +%Y%m%d%H%M%S) -le $(date +%Y%m%d%H%M%S) ]
+#	datestr=$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5"#"$6"#"$7"#"$8}')
+#	if [ $(date -j -f "%b#%d#%H:%M:%S#%Y" $datestr +%Y%m%d%H%M%S) -le $(date +%Y%m%d%H%M%S) ]
+# As it turns out, my lovely date parsing function is not needed, because the damn ticket just prints Expired instead of a date.
+	if [ $(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5}') == ">>>Expired<<<" ]
 	then
 		echo "Existing ticket expired; please re-authenticate."
 		kinit -c ~/.kcaches/cache_CERN adasgupt@CERN.CH
@@ -77,8 +79,10 @@ function kfnal
 		kinit -c ~/.kcaches/cache_FNAL adasgupt@FNAL.GOV
 		kfnal
 	fi
-	datestr=$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5"#"$6"#"$7"#"$8}')
-	if [ $(date -j -f "%b#%d#%H:%M:%S#%Y" $datestr +%Y%m%d%H%M%S) -le $(date +%Y%m%d%H%M%S) ]
+#	datestr=$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5"#"$6"#"$7"#"$8}')
+#	if [ $(date -j -f "%b#%d#%H:%M:%S#%Y" $datestr +%Y%m%d%H%M%S) -le $(date +%Y%m%d%H%M%S) ]
+# As it turns out, my lovely date parsing function is not needed, because the damn ticket just prints Expired instead of a date.
+	if [ $(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5}') == ">>>Expired<<<" ]
 	then
 		echo "Existing ticket expired; please re-authenticate."
 		kinit -c ~/.kcaches/cache_FNAL adasgupt@FNAL.GOV
