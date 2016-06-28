@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/usr/bin'
 let g:netrw_dirhist_2='/Users/Riju/texmf'
 let g:netrw_dirhist_3='/Users/Riju'
+let g:netrw_dirhist_4='/Users/Riju/texmf/tex/latex/riju'
+let g:netrw_dirhist_5='/Users/Riju/Library/Application Support/Firefox/Profiles'
+let g:netrw_dirhist_6='/Users/Riju/Desktop/Talks/2016-01-15 - Top Mass Talk'

@@ -103,6 +103,32 @@ function sshfnal
 	ssh -Y adasgupt@cmslpc${1}.fnal.gov
 }
 
+# cmsusr logon and webpage tunnel aliases
+function sshcms
+{
+	if [ $# == 0 ]; then
+		ssh adasgupt@cmsusr.cern.ch
+		return 0
+	fi
+	if [ "$1" == "-t" ]; then
+		kcern
+		ssh -t adasgupt@lxplus.cern.ch -L 1080:localhost:1081 ssh -ND 1081 cmsusr
+		return 0
+	fi
+	if [[ "$1" =~ [^0-9] ]]; then
+		echo "Invalid target; choose from 0-4." >&2
+		return 1
+	fi
+	ssh adasgupt@cmsusr${1}.cern.ch
+}
+
+# Sets grep color
+export GREP_COLOR="1;35"
+function ggrep
+{
+	sed -n 's/:/\033[m\'$'\n    /p' <(2>/dev/null grep --color=always "$@")
+}
+
 #--TAB TITLE FUNCTIONS--
 
 # Sets Terminal titles; -t for tab, -w for window
@@ -128,4 +154,13 @@ function vim
 	else
 		/usr/bin/vim
 	fi
+}
+
+#--FRAMEWORK PYTHON--
+function fp {
+    if [[ ! -z "$VIRTUAL_ENV" ]]; then
+        PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python "$@"
+    else
+        /usr/local/bin/python "$@"
+    fi
 }

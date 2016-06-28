@@ -109,5 +109,3 @@ printf "************************************************************************
 # Logon history
 sed -i "1a $(printf "%-10s --- %s\n" ${HOSTNAME%%.*} "`date +"%b %d %Y, %T %Z"`")" ~/logons
 sed -ni "1,101p" ~/logons
-
-
