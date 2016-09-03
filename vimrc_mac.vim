@@ -5,6 +5,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 set ruler hlsearch
 
 " Syntax for .note files
+" Folds between {{{ and }}}
 " ^Whitespace are tabs or groups of 2 spaces
 " H1 are ^==                         ; bold blue
 " H2 are ^===                        ; blue
@@ -15,6 +16,7 @@ set ruler hlsearch
 " magenta are between ``             ; magenta
 " bold are between --                ; bold
 autocmd BufRead,BufNewFile *.note set filetype=note
+autocmd FileType note setlocal foldmethod=marker
 autocmd FileType note highlight H1 cterm=bold ctermfg=blue
 autocmd FileType note syntax match H1 /^== .*/
 autocmd FileType note highlight H2 ctermfg=blue
