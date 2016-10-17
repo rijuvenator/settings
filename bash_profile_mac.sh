@@ -16,16 +16,24 @@ alias ls='ls -GFh'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
+alias gpl='git pull'
+alias gs='git status'
+alias gb='git branch'
+alias gm='git merge'
+alias gco='git checkout'
+alias gd='git diff --cached'
 alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
-alias gs='git status'
-alias gd='git diff --cached'
+alias gpld='git pull origin master'
 
 # Sets default editor and line editing to vim; set mode indicator
 export EDITOR=vim
 set -o vi
 bind 'set show-mode-in-prompt on'
+
+# Calculator
+function calc () { echo "" | awk '{print '"$*"'}'; }
 
 #--SSH FUNCTIONS--
 # krb5.conf expects the ticket to be in ~/.kcaches/cache, so the directory MUST exist

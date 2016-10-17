@@ -18,6 +18,9 @@ trap 'echo -ne "\e[0m"' DEBUG
 export EDITOR=vim
 set -o vi
 
+# Calculator
+function calc () { echo "" | awk '{print '"$*"'}'; }
+
 # ls with all, file identification, human file sizes, and colors
 alias ls='ls -Fh --color=auto'
 
@@ -32,11 +35,16 @@ complete -r cd
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
+alias gpl='git pull'
+alias gs='git status'
+alias gb='git branch'
+alias gm='git merge'
+alias gco='git checkout'
+alias gd='git diff --cached'
 alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
-alias gs='git status'
-alias gd='git diff --cached'
+alias gpld='git pull origin master'
 
 # Sets $ROOTSYS directory
 # export ROOTSYS="/afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.32/x86_64-slc6-gcc49-opt/root/"
@@ -109,3 +117,6 @@ printf "************************************************************************
 # Logon history
 sed -i "1a $(printf "%-10s --- %s\n" ${HOSTNAME%%.*} "`date +"%b %d %Y, %T %Z"`")" ~/logons
 sed -ni "1,101p" ~/logons
+
+# Opens FD3
+exec 3>&1

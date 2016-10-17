@@ -9,14 +9,14 @@ function kkk
 		cp ~/.kcaches/cache_$NAME ~/.kcaches/cache
 	else
 		kinit -c ~/.kcaches/cache_$NAME adasgupt@$FULL
-		kkk
+		kkk $1
 	fi
 	datestr=$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5"#"$6"#"$7"#"$8}')
 	if [ $(date -j -f "%b#%d#%H:%M:%S#%Y" $datestr +%Y%m%d%H%M%S) -le $(date +%Y%m%d%H%M%S) ]
 	then
 		echo "Existing ticket expired; please re-authenticate."
 		kinit -c ~/.kcaches/cache_$NAME adasgupt@$FULL
-		kkk
+		kkk $1
 	fi
 }
 
@@ -26,7 +26,7 @@ rm -r ~/settings/vim_mac/
 cp -r ~/.vim ~/settings/vim_mac
 echo "Copying from lxplus; authentication may be required"
 kkk CERN.CH
-scp adasgupt@lxplus.cern.ch:~/".bashrc .vimrc .rootlogon.C colors.sh" ~/settings/
+scp adasgupt@lxplus.cern.ch:~/".bashrc .vimrc .rootlogon.C scripts/colors" ~/settings/
 mv ~/settings/.bashrc ~/settings/bashrc_lxplus.sh
 mv ~/settings/.vimrc ~/settings/vimrc_lxplus.vim
 mv ~/settings/.rootlogon.C ~/settings/rootlogon.C
