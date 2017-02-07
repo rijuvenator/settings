@@ -10,6 +10,7 @@ Contains:
   * `colors.sh` (lxplus)
   * `.bashrc` (lxplus, cmslpc)
   * `.tcshrc` (cmslpc)
+  * `pie.py` (lxplus, OS X)
 
 Notes:
   * Dots should be prefixed
@@ -45,3 +46,6 @@ The `.vim/` folder contains the [VIM-LaTeX](http://vim-latex.sourceforge.net/) p
 
 `colors.sh` prints a helpful ANSI SGR color code matrix
   * On OS X, run `macColors.sh` first to produce a Mac-compatible `colors.sh`
+
+`pie.py` wraps `du` with a visual bar chart breakdown of the files in the current folder
+  * takes one argument, the max number of boxes (e.g. 10, 50, 100)

@@ -40,7 +40,8 @@ alias gs='git status'
 alias gb='git branch'
 alias gm='git merge'
 alias gco='git checkout'
-alias gd='git diff --cached'
+alias gd='git diff'
+alias gdc='git diff --cached'
 alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
@@ -120,3 +121,17 @@ sed -ni "1,101p" ~/logons
 
 # Opens FD3
 exec 3>&1
+
+# bro do you even ?
+# function bro { if [ "$1" == "do" -a "$2" == "you" -a "$3" == "even" -a "${@: -1}" == "?" ]; then shift; shift; shift; n="$#"; ${@:1:$((n-1))}; fi; }
+function bro
+{
+    if [ "$1" == "do" -a "$2" == "you" -a "$3" == "even" -a "${@: -1}" == "?" ]
+    then
+        shift
+        shift
+        shift
+        n="$#"
+        ${@:1:$((n-1))}
+    fi
+}

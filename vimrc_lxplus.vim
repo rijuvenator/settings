@@ -37,3 +37,21 @@ autocmd FileType note highlight Magenta ctermfg=magenta
 autocmd FileType note syntax match Magenta /\`.\{-}\`/
 autocmd FileType note highlight Cyan ctermfg=darkcyan
 autocmd FileType note syntax match Cyan /{.\{-}\}/
+
+" Python tab-indented code block visualization
+autocmd FileType python let g:pyblock = 0
+autocmd FileType python map <leader>vi :call ToggleIndent(g:pyblock)<cr>
+
+function ToggleIndent(pyblock)
+	if a:pyblock == 0
+		let g:pyblock = 1
+		execute "normal z.ml"
+		execute ":%s/\t/|   /g"
+		execute "normal `l"
+	else
+		let g:pyblock = 0
+		execute "normal z.ml"
+		execute ":%s/|   /\t/g"
+		execute "normal `l"
+	endif
+endfunction

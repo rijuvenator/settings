@@ -21,7 +21,8 @@ alias gs='git status'
 alias gb='git branch'
 alias gm='git merge'
 alias gco='git checkout'
-alias gd='git diff --cached'
+alias gd='git diff'
+alias gdc='git diff --cached'
 alias gau='git add -u'
 alias gcm='git commit -m'
 alias gpd='git push origin master'
@@ -130,6 +131,9 @@ function sshcms
 	ssh adasgupt@cmsusr${1}.cern.ch
 }
 
+# kreset: deletes ~/.kcaches/cache_CERN and ~/.kcaches/cache_FNAL
+alias kreset='rm ~/.kcaches/cache_*'
+
 # Sets grep color
 export GREP_COLOR="1;35"
 function ggrep
@@ -171,4 +175,18 @@ function fp {
     else
         /usr/local/bin/python "$@"
     fi
+}
+
+# bro do you even ?
+# function bro { if [ "$1" == "do" -a "$2" == "you" -a "$3" == "even" -a "${@: -1}" == "?" ]; then shift; shift; shift; n="$#"; ${@:1:$((n-1))}; fi; }
+function bro
+{
+	if [ "$1" == "do" -a "$2" == "you" -a "$3" == "even" -a "${@: -1}" == "?" ]
+	then
+		shift
+		shift
+		shift
+		n="$#"
+		${@:1:$((n-1))}
+	fi
 }
