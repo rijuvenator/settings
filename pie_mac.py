@@ -41,7 +41,7 @@ def piebar(fraction, MAXBAR=args.maxbar, COL='2'):
 def getFormattedSize(size, HUMAN=not args.nohuman):
 	if HUMAN:
 		fsize = size * 2**10
-		fdict = {2**40 : 'G', 2**20 : 'M', 2**10 : 'K'}
+		fdict = {2**30 : 'G', 2**20 : 'M', 2**10 : 'K'}
 		for bsize in fdict:
 			if fsize >= bsize:
 				fsize = '{0:3.1f}'.format(float(fsize)/(bsize))+fdict[bsize]
@@ -69,7 +69,7 @@ for line in lines:
 		# set realmax characters, maxsize characters, format string, formatted size string, then print
 		fsize = getFormattedSize(size)
 		REALMAX = MAXLENGTH-len(name)+len(colstring(name, opt))
-		fstring = '{{NAME:>{REALMAX}s}} {{SIZE:>{MAXSIZE}s}}         {{BAR:s}}'.format(REALMAX=REALMAX, MAXSIZE=max(5, len(fsize)))
+		fstring = '{{NAME:>{REALMAX}s}} {{SIZE:>{MAXSIZE}s}}         {{BAR:s}}'.format(REALMAX=REALMAX, MAXSIZE=max(7, len(fsize)))
 		print fstring.format(NAME=colstring(name, opt), SIZE=fsize, BAR=piebar(1., COL='9'))
 	else:
 		# set size, name => name from ls, color opt
@@ -94,6 +94,6 @@ for line in lines:
 		fsize = getFormattedSize(size)
 		REALMAX = MAXLENGTH-len(name)+len(colstring(name, opt))
 		MAXSIZE = len(str(size)) if args.nohuman else 5
-		fstring = '{{NAME:>{REALMAX}s}} {{SIZE:>{MAXSIZE}s}} {{PERCENT:6.2f}}% {{BAR:s}}'.format(REALMAX=REALMAX, MAXSIZE=max(5, len(fsize)))
+		fstring = '{{NAME:>{REALMAX}s}} {{SIZE:>{MAXSIZE}s}} {{PERCENT:6.2f}}% {{BAR:s}}'.format(REALMAX=REALMAX, MAXSIZE=max(7, len(fsize)))
 		print fstring.format(NAME=colstring(name, opt), PERCENT=float(size)/total*100, SIZE=fsize, BAR=piebar(float(size)/total))
 print ''
