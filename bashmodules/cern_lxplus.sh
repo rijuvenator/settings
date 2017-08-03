@@ -22,19 +22,22 @@ function sshfnal
     ssh -Y adasgupt@cmslpc${1}.fnal.gov
 }
 
-#### EOS Commands ####
-# Mount EOS
-# eosmount='/afs/cern.ch/project/eos/installation/0.3.84-aquamarine/bin/eos.select -b fuse mount'
-timeout 10s /afs/cern.ch/project/eos/installation/0.3.84-aquamarine/bin/eos.select -b fuse mount ~/eos 2> /dev/null
-x="$?"
-if [ $x -eq "124" ]
-then
-	echo "EOS mount timed out; continuing..." >&2
-elif [ "$x" -ne "0" ]
-then
-	echo $x
-	echo "EOS not mounted successfully." >&2
-fi
+##### EOS Commands ####
+## Mount EOS
+#alias eosmount='/afs/cern.ch/project/eos/installation/0.3.84-aquamarine/bin/eos.select -b fuse mount'
+#alias eosumount='/afs/cern.ch/project/eos/installation/0.3.84-aquamarine/bin/eos.select -b fuse umount'
+#alias eosforceumount='killall eosfsd 2>/dev/null; killall -9 eosfsd 2>/dev/null; fusermount -u '
+#alias eosremount='eosforceumount ~/eos; eosumount ~/eos; eosmount ~/eos'
+#timeout 10s /afs/cern.ch/project/eos/installation/0.3.84-aquamarine/bin/eos.select -b fuse mount ~/eos 2> /dev/null
+#x="$?"
+#if [ $x -eq "124" ]
+#then
+#	echo "EOS mount timed out; continuing..." >&2
+#elif [ "$x" -ne "0" ]
+#then
+#	echo "Error code $x" >&2
+#	echo "EOS not mounted successfully." >&2
+#fi
 
 #### LOGON ROUTINE ####
 # Replacement motd

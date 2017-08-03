@@ -29,6 +29,7 @@ let g:Tex_TreatMacViewerAsUNIX = 1
 let g:Tex_ExecuteUNIXViewerInForeground = 1
 "let g:Tex_ViewRule_pdf = '/Applications/Adobe\ Acrobat\ Reader\ DC.app'
 let g:Tex_ViewRule_pdf = 'open -a Skim.app'
+let g:Tex_GotoError=0
 
 " Compile LaTeX > DVI > PDF
 function DVIPDF()
