@@ -8,3 +8,10 @@ function fp {
         /usr/local/bin/python "$@"
     fi
 }
+
+# macOS Sierra -- Apple killed GSSAPI authentication so
+# I used a copy of the ssh program from a 10.11 box
+# and put it in /usr/local/bin. However, scp is still
+# broken so I must specify what ssh program to use with
+# the -S flag. After that, everything's great
+alias scp='scp -S /usr/local/bin/ssh'

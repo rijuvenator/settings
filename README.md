@@ -44,6 +44,11 @@ I modified `/etc/krb5.conf` on OS X so as to conveniently ssh without passwords,
   * Under `[domain_realm]`:
     * `cern.ch = CERN.CH`
 
+macOS 10.12 (Sierra): Apple removed GSSAPI authentication so
+  * `/etc/ssh/ssh_config`: added `XAuthLocation /opt/X11/bin/xauth`
+  * Replaced the `ssh` program by adding it to `~/usr/bin/local/`
+  * for OpenSSH 7.1 : Commented out most of my `~/.ssh/config`
+
 ### `.vim/` Folder and `.vimrc`
 #### `.vimrc`
 `.vimrc` sets the following:

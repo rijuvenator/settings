@@ -22,7 +22,8 @@ function kauth
 # Backup lxplus
 echo -e "\033[1mBacking up lxplus; authentication may be required\033[m"
 kauth CERN.CH
-scp adasgupt@lxplus.cern.ch:~/".bashrc .vimrc .rootlogon.C scripts/colors" ~/settings/
+#scp adasgupt@lxplus.cern.ch:~/".bashrc .vimrc .rootlogon.C scripts/colors" ~/settings/
+scp -S /usr/local/bin/ssh adasgupt@lxplus.cern.ch:~/".bashrc .vimrc .rootlogon.C scripts/colors" ~/settings/
 mv ~/settings/.bashrc      ~/settings/bashrc_lxplus.sh
 mv ~/settings/.vimrc       ~/settings/vimrc_lxplus.vim
 mv ~/settings/.rootlogon.C ~/settings/rootlogon.C
@@ -42,6 +43,7 @@ cp ~/.bash_profile ~/settings/bash_profile_mac.sh
 # Backup cmslpc
 echo -e "\n\033[1mCopying from cmslpc; authentication may be required\033[m"
 kauth FNAL.GOV
-scp adasgupt@cmslpc-sl6.fnal.gov:~/".tcshrc .bashrc" ~/settings/
+#scp adasgupt@cmslpc-sl6.fnal.gov:~/".tcshrc .bashrc" ~/settings/
+scp -S /usr/local/bin/ssh adasgupt@cmslpc-sl6.fnal.gov:~/".tcshrc .bashrc" ~/settings/
 mv ~/settings/.tcshrc ~/settings/tcshrc_cmslpc.sh
 mv ~/settings/.bashrc ~/settings/bashrc_cmslpc.sh
