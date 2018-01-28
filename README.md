@@ -69,6 +69,7 @@ macOS 10.12 (Sierra): Apple removed GSSAPI authentication so
     * The "change environment" macro has been slightly changed to prevent extra `\` characters.
     * [ ] To do: I probably need to make a similar change to the "change command" macro
   * Contains plugin files for my own `.note` files: `colors`, `ftdetect`, and `syntax`
+  * Modifies the 2014 default python.vim by adding a `setlocal noexpandtab` to `~/.vim/after/ftplugin/python.vim`
 
 #### Other
 `.rootlogon.C` is my ROOT configuration file. It needs to be updated...

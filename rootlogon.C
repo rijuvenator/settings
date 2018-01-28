@@ -20,7 +20,7 @@ TH1F* th(const char* name="h1")
 	return h1;
 }
 
-TTree* tt(const char* name)
+TTree* tt(const char* name, TFile* _file0)
 {
 		TTree* t = (TTree*) _file0->Get(name);
 			return t;
