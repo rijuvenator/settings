@@ -3,4 +3,4 @@
 " I only use tabs at the beginning of lines, scrupulously
 " so putting this line in .vim/after/ftplugin/python.vim
 " calls it after the plugins are loaded.
-setlocal noexpandtab
+setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
