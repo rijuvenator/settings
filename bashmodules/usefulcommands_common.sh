@@ -1,6 +1,9 @@
 # Calculator
 function calc () { echo "" | awk '{print '"$*"'}'; }
 
+# Columns
+function cl() { awk "{print \$$1}" $2; }
+
 # Git aliases
 alias ga='git add'
 alias gc='git commit'
