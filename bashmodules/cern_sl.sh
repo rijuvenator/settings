@@ -9,8 +9,8 @@ alias CMSENV='eval `scramv1 runtime -sh`'
 alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias voms='voms-proxy-init -voms cms'
-alias scramb=''
-alias cmsenv='eval `scramv1 runtime -sh`; alias scramb="cd ${CMSSW_BASE}/src/; scram b -j8; cd -"'
+alias scramb='echo "No SCRAM environment set yet"'
+alias cmsenv='eval `scramv1 runtime -sh`; alias scramb="pushd ${CMSSW_BASE}/src/; scram b -j8; popd"'
 
 # EOS directories
 export EOS="eos/cms/store/user/adasgupt"
@@ -48,3 +48,9 @@ function fc
 # Logon history
 sed -i "1a $(printf "%-10s --- %s\n" ${HOSTNAME%%.*} "`date +"%b %d %Y, %T %Z"`")" ~/logons
 sed -ni "1,101p" ~/logons
+
+# evince without error
+function evince ()
+{
+	/usr/bin/evince $1 2>&1 | grep -v "Failed to create dbus proxy";
+}
