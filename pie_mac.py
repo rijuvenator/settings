@@ -76,7 +76,7 @@ for line in lines:
 		size = int(cols[0])
 		name = cols[1]
 		for f in filelist:
-			if name in f:
+			if name in f and f.endswith(('/','@','*')):
 				name = f
 		if name[-1] == '/':
 			opt = 'di'
@@ -85,10 +85,9 @@ for line in lines:
 		elif name[-1] == '*':
 			opt = 'ex'
 		else:
-			for i in range(2,6):
-				if name[-i:] in ftypes.keys():
-					opt = name[-i:]
-					break
+			tokens = name.split('.')
+			if '.'+tokens[-1] in ftypes.keys():
+				opt = '.'+tokens[-1]
 
 		# set realmax characters, maxsize characters, format string, formatted size string, then print
 		fsize = getFormattedSize(size)
