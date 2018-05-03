@@ -9,6 +9,7 @@ alias CMSENV='eval `scramv1 runtime -sh`'
 alias cmsset='source /cvmfs/cms.cern.ch/cmsset_default.sh'
 alias crabenv='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias voms='voms-proxy-init -voms cms'
+alias vomsc='voms; cp /tmp/x509up_u79337 ~/'
 alias scramb='echo "No SCRAM environment set yet"'
 alias cmsenv='eval `scramv1 runtime -sh`; alias scramb="pushd ${CMSSW_BASE}/src/; scram b -j8; popd"'
 
