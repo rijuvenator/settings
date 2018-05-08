@@ -1,5 +1,7 @@
 filetype plugin indent on
-set tabstop=4 shiftwidth=4 softtabstop=4
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+" C++ indentation should be 2 spaces
+autocmd FileType cpp setlocal ts=2 sw=2 sts=2 et
 
 " Python tab-indented code block visualization
 autocmd FileType python let g:pyblock = 0
