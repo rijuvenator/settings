@@ -2,7 +2,7 @@
 "autocmd FileType note let g:syntax_cmd="skip"
 filetype plugin indent on
 syntax on
-set tabstop=4 shiftwidth=4 softtabstop=4
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set ruler hlsearch
 
 " Commands for .tex files
