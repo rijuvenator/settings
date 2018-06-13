@@ -17,6 +17,10 @@ function kauth
 		kinit -c ~/.kcaches/cache_$NAME adasgupt@$FULL
 		kauth $1
 	fi
+    if [ "$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5$6$8}')" == "$(date "+%b%d%Y")" ]
+    then
+        echo "Warning: authentication will expire later today, please consider re-authenticating."
+    fi
 }
 
 # Backup lxplus
