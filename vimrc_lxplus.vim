@@ -7,6 +7,9 @@ autocmd FileType cpp setlocal ts=2 sw=2 sts=2 et
 autocmd FileType python let g:pyblock = 0
 autocmd FileType python map <leader>vi :call ToggleIndent(g:pyblock)<cr>
 
+" make *.md files be markdown
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
 function ToggleIndent(pyblock)
 	if a:pyblock == 0
 		let g:pyblock = 1

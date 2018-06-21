@@ -5,6 +5,10 @@ source ~/.bashmodules/cern_sl.sh
 export WS="/afs/cern.ch/work/a/adasgupt"
 export WSC="/afs/cern.ch/work/c/cschnaib"
 
+# LSF job aliases
+alias CHECKLSF='for i in LSF*; do cat $i/STDOUT; done'
+alias WCLSF='for i in LSF*; do if [ $(wc -l < $i/STDOUT) -ne 9 ]; then echo $i; fi; done'
+
 #### SSH to CMSLPC ####
 # cmslpc remote logon
 export FH="adasgupt@cmslpc-sl6.fnal.gov"

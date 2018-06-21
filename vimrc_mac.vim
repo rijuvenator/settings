@@ -17,6 +17,9 @@ autocmd FileType tex map <Leader>ei <F5>
 autocmd FileType tex map <Leader>up <F5>
 autocmd FileType tex map <Leader>ld :call DVIPDF()<cr>
 
+" make *.md files be markdown
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
 " Recommended for .tex files
 " + viewer stuff to get it to open in Preview on a Mac
 set grepprg=grep\ -nH\ $*
