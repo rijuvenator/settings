@@ -5,9 +5,105 @@ source ~/.bashmodules/cern_sl.sh
 export WS="/afs/cern.ch/work/a/adasgupt"
 export WSC="/afs/cern.ch/work/c/cschnaib"
 
-# LSF job aliases
-alias CHECKLSF='for i in LSF*; do cat $i/STDOUT; done'
-alias WCLSF='for i in LSF*; do if [ $(wc -l < $i/STDOUT) -ne 9 ]; then echo $i; fi; done'
+# LSF job checking function
+function CHECKLSF
+{
+    if [ $# == 0 ]
+    then
+        COMMAND="cat \$i/STDOUT"
+    elif [[ "$1" == "-h" || "$1" == "help" || "$1" == "--help" ]]
+    then
+        echo 'Usage: CHECKLSF [|cat|echo|COMMAND] [|LINECOUNT|grep] [L...|S...] [PATTERN]'
+        echo '  arg 1 can be nothing (default cat), cat, echo, or a command e.g. "grep python \$i/LSFJOB"'
+        echo '  arg 2 can be nothing (default cat), LINECOUNT (print if not wc -l), or grep (print if grep)'
+        echo '  if arg 2 is grep'
+        echo '    arg 3 is L<something> or S<something>, becoming LSFJOB and STDOUT, respectively'
+        echo '    arg 4 is PATTERN for grep'
+        echo '    arg 5 can be nothing (print if) or -v (print if not)'
+        return 0
+    elif [ "$1" == 'cat' ]
+    then
+        COMMAND="cat \$i/STDOUT"
+    elif [ "$1" == 'echo' ]
+    then
+        COMMAND="echo \$i"
+    else
+        COMMAND="$1"
+    fi
+
+    if [ -z "$2" ]
+    then
+        for i in LSF*
+        do
+            eval $COMMAND
+        done
+        return 0
+    elif [[ "$2" =~ ^[0-9]+$ ]]
+    then
+        LINECOUNT="$2"
+        for i in LSF*
+        do
+            if [ $(wc -l < $i/STDOUT) -ne $LINECOUNT ]
+            then
+                eval $COMMAND
+            fi
+        done
+        return 0
+    elif [ "$2" == 'grep' ]
+    then
+        if [ -z "$3" ]
+        then
+            echo "Error: grep but no file (try grep LSFJOB python)"
+            return 1
+        elif [ -z "$4" ]
+        then
+            echo "Error: grep FILE but no pattern (try grep LSFJOB python)"
+            return 2
+        elif [[ "$3" =~ [LS].* ]]
+        then
+            PATTERN="$4"
+
+            if [[ "$3" =~ L.* ]]
+            then
+                FILE="LSFJOB"
+            elif [[ "$3" =~ S.* ]]
+            then
+                FILE="STDOUT"
+            fi
+
+            if [ -z "$5" ]
+            then
+                for i in LSF*
+                do
+                    if grep -q "$PATTERN" $i/$FILE*
+                    then
+                        eval $COMMAND
+                    fi
+                done
+                return 0
+            elif [ "$5" == "-v" ]
+            then
+                for i in LSF*
+                do
+                    if grep -q -v "$PATTERN" $i/$FILE*
+                    then
+                        eval $COMMAND
+                    fi
+                done
+                return 0
+            else
+                echo "Error: arg 5 should be nothing or -v"
+                return 3
+            fi
+        else
+            echo "Error: arg 3 should be L... or S... (try grep LSFJOB python)"
+            return 4
+        fi
+    else
+        echo "Error: arg 2 should be nothing, a number, or grep"
+        return 5
+    fi
+}
 
 #### SSH to CMSLPC ####
 # cmslpc remote logon
