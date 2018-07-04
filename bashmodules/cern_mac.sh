@@ -40,7 +40,7 @@ function kcern
 		kinit -c ~/.kcaches/cache_CERN adasgupt@CERN.CH
 		kcern
     fi
-    if [ "$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5$6$8}')" == "$(date "+%b%d%Y")" ]
+    if [ "$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5$6$8}')" == "$(date "+%b%-d%Y")" ]
     then
         echo "Warning: authentication will expire later today, please consider re-authenticating."
 	fi
@@ -79,7 +79,7 @@ function kfnal
 		kinit -c ~/.kcaches/cache_FNAL adasgupt@FNAL.GOV
 		kfnal
     fi
-    if [ "$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5$6$8}')" == "$(date "+%b%d%Y")" ]
+    if [ "$(klist -c ~/.kcaches/cache | awk '/krbtgt/{print $5$6$8}')" == "$(date "+%b%-d%Y")" ]
     then
         echo "Warning: authentication will expire later today, please consider re-authenticating."
 	fi
