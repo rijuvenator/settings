@@ -1,4 +1,6 @@
 " Standard stuff
+" stop G, gg, etc. from moving to the beginning of the line
+set nosol
 "autocmd FileType note let g:syntax_cmd="skip"
 filetype plugin indent on
 syntax on

@@ -1,3 +1,5 @@
+" stop G, gg, etc. from moving to the beginning of the line
+set nosol
 filetype plugin indent on
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 " C++ indentation should be 2 spaces

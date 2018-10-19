@@ -19,7 +19,10 @@ function CHECKLSF
         echo '  if arg 2 is grep'
         echo '    arg 3 is L<something> or S<something>, becoming LSFJOB and STDOUT, respectively'
         echo '    arg 4 is PATTERN for grep'
-        echo '    arg 5 can be nothing (print if) or -v (print if not)'
+        echo '    arg 5 can be nothing (print if matching lines exist)'
+        echo '                 -v      (print if not-matching lines exist)'
+        echo '                 -n      (print if matching lines do not exist)'
+        echo '                 -nv     (print if not-matching lines do not exist)'
         return 0
     elif [ "$1" == 'cat' ]
     then
@@ -91,8 +94,28 @@ function CHECKLSF
                     fi
                 done
                 return 0
+            elif [ "$5" == "-n" ]
+            then
+                for i in LSF*
+                do
+                    if ! grep -q "$PATTERN" $i/$FILE*
+                    then
+                        eval $COMMAND
+                    fi
+                done
+                return 0
+            elif [ "$5" == "-nv" ]
+            then
+                for i in LSF*
+                do
+                    if ! grep -q -v "$PATTERN" $i/$FILE*
+                    then
+                        eval $COMMAND
+                    fi
+                done
+                return 0
             else
-                echo "Error: arg 5 should be nothing or -v"
+                echo "Error: arg 5 should be nothing, -v, -n, or -nv"
                 return 3
             fi
         else
