@@ -7,6 +7,12 @@ syntax on
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set ruler hlsearch
 
+" always jump to the last known cursor position
+autocmd BufReadPost *
+\ if line("'\"") >= 1 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
+
 " Commands for .tex files
 " 'command/environment''change/insert'
 " 'usepackage'

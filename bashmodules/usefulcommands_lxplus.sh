@@ -43,3 +43,7 @@ function evince ()
 
 # start ssh-agent, add ssh private key; must be done once per shell
 alias sshsetup='eval `ssh-agent -s`; ssh-add'
+
+# condor_q aliases
+alias cq='condor_q'
+alias cqa='condor_q -format "%s\n" Args'
