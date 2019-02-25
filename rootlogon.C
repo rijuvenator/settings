@@ -23,7 +23,13 @@ TH1F* th(const char* name="h1")
 TTree* tt(const char* name, TFile* _file0)
 {
 		TTree* t = (TTree*) _file0->Get(name);
-			return t;
+		return t;
+}
+
+TH1F* hh(const char* name, TFile* _file0)
+{
+  TH1F* h = (TH1F*) _file0->Get(name);
+  return h;
 }
 
 void setStyle(int width_=800, int height_=600, int font_=42, float tsize_=0.04)
