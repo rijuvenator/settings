@@ -1,6 +1,6 @@
 #!/bin/bash
 # Backup Mac
-echo -e "\n\033[1mBacking up local Mac: .vim .bashmodules .vimrc .bash_profile\033[m"
+echo -e "\n\033[1mBacking up local Mac: .vim .bashmodules .vimrc .bash_profile .inputrc\033[m"
 rm -r ~/settings/vim_mac/ ~/settings/bashmodules
 cp -r ~/.bashmodules ~/settings/bashmodules
 cp -r ~/.vim ~/settings/vim_mac

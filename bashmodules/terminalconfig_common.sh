@@ -5,4 +5,5 @@ trap 'echo -ne "\e[0m"' DEBUG
 export EDITOR=vim
 set -o vi
 
-
+# Sets extended globbing
+shopt -s extglob
