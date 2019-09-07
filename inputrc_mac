@@ -1,0 +1,6 @@
+set editing-mode vi
+set vi-ins-mode-string "\1\033[36m[+]\033[m\2 "
+set vi-cmd-mode-string "\1\033[36m[:]\033[m\2 "
+set show-mode-in-prompt on
+set colored-stats on
+set visible-stats on
