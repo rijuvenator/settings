@@ -8,3 +8,6 @@ complete -r cd
 
 # this is what complete -r cd is removing
 # complete -o nospace -F _cd cd
+
+# this completes environment variables
+shopt -s direxpand

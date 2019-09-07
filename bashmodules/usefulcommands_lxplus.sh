@@ -47,3 +47,18 @@ alias sshsetup='eval `ssh-agent -s`; ssh-add'
 # condor_q aliases
 alias cq='condor_q'
 alias cqa='condor_q -format "%s\n" Args'
+alias cstat='condor_status -sched'
+function cset ()
+{
+    if [[ "$1" =~ ^[01][0-9]$ ]]
+    then
+        for s in CR SCH
+        do
+            export _condor_${s}EDD_HOST="bigbird$1.cern.ch"
+        done
+        return 0
+    else
+        echo "Need a new scheduler, run cstat first"
+        return 1
+    fi
+}

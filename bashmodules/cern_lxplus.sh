@@ -166,15 +166,15 @@ function sshfnal
 # Replacement motd
 if [ $(tput cols) -lt 82 ]
 then
-    printf "\n*****************************************\n"
+    printf "\n**********************************************\n"
     printf "\e[1mWelcome to \e[31m%s\e[30m, " ${HOSTNAME%%.*}
-    printf "\e[1mrunning \e[32mSLC %s\e[30m.\n" `sed -nr "/SLC/s/.*\s//gp" /etc/motd`
+    printf "\e[1mrunning \e[32mCentOS %s\e[30m.\n" `sed -nr "/CentOS/s/.*\s//gp" /etc/motd`
     printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\e[m\n" `users | sed -n "s/\s/\n/gp" | wc -l`
-    printf "*****************************************\n\n"
+    printf "**********************************************\n\n"
 else
-    printf "\n*********************************************************************************\n"
+    printf "\n**************************************************************************************\n"
     printf "\e[1mWelcome to \e[31m%s\e[30m, " ${HOSTNAME%%.*}
-    printf "\e[1mrunning \e[32mSLC %s\e[30m. " `sed -nr "/SLC/s/.*\s//gp" /etc/motd`
+    printf "\e[1mrunning \e[32mCentOS %s\e[30m. " `sed -nr "/CentOS/s/.*\s//gp" /etc/motd`
     printf "\e[1mThere are currently \e[34m%s\e[30m users logged in.\e[m\n" `users | sed -n "s/\s/\n/gp" | wc -l`
-    printf "*********************************************************************************\n"
+    printf "**************************************************************************************\n"
 fi
